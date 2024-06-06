@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react'
 
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import TextField from '@mui/material/TextField'
+
 function App() {
   const [input, setInput] = useState('')
 
@@ -40,31 +46,34 @@ function App() {
   }
 
   return (
-    <>
+    <Container>
       <h1>book-searcher</h1>
-      <input
-        type="text"
+      <TextField
+        variant="outlined"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="本のタイトルを入力"
       />
-      <button
-        onClick={() => {
-          searchAll()
-        }}
-      >
-        一括検索
-      </button>
-      <ul>
+      <List>
+        <ListItem>
+          <Button
+            variant="contained"
+            onClick={() => {
+              searchAll()
+            }}
+          >
+            一括検索
+          </Button>
+        </ListItem>
         {searchList.map((searchItem, index) => (
-          <li key={index}>
-            <button onClick={() => search(searchItem.url)}>
+          <ListItem key={index}>
+            <Button variant="outlined" onClick={() => search(searchItem.url)}>
               {searchItem.name}
-            </button>
-          </li>
+            </Button>
+          </ListItem>
         ))}
-      </ul>
-    </>
+      </List>
+    </Container>
   )
 }
 
