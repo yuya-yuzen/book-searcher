@@ -50,6 +50,7 @@ function App() {
       <h1>book-searcher</h1>
       <TextField
         variant="outlined"
+        fullWidth
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="本のタイトルを入力"
